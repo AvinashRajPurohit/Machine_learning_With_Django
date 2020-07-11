@@ -1,0 +1,35 @@
+{% include 'carPred/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Project</h1>
+<style>
+
+.form_container {
+    margin-top: 20px;
+}
+    .login_btn {
+    width: 100%;
+    background: #065b90 !important;
+    color: white !important;
+}
+</style>
+<div class="d-flex justify-content-center form_container">
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+<div class="d-flex justify-content-center mt-3 login_container">
+<button class="btn login_btn"  type="submit">Predict Car Price</button>
+</div>
+</form>
+</div>
+{% if output < val %}
+<div class="alert alert-danger" role="alert">
+  {{ message }}
+</div>
+{% else %}
+<div class="alert alert-success" role="alert">
+ {{ message }}
+</div>
+{%endif%}
+{% endblock content %}
